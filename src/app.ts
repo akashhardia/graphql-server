@@ -1,3 +1,4 @@
+import './db';
 import { typeDefs, resolvers } from './Book';
 import { ApolloServer } from 'apollo-server';
 

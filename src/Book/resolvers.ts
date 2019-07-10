@@ -7,10 +7,10 @@ export const resolvers = {
     books: () => Books.getAllBooks()
   },
   Mutation: {
-    addBook: (parent: any, args: {[key: string]: string}) => {
+    addBook: (parent: any, args: {[key: string]: any}) => {
       return Books.addBook(args.title, args.author);
     },
-    removeBook: (parent: any, args: {[key: string]: string}) => {
+    removeBook: (parent: any, args: {[key: string]: any}) => {
       return Books.removeBook(args.title);
     }
   }
