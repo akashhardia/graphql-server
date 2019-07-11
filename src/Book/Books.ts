@@ -1,10 +1,8 @@
-import * as _ from 'lodash';
-import { getRepository } from 'typeorm';
 import { Book } from '../entity/Book';
+import { Ibook } from './interfaces';
+import { getRepository } from 'typeorm';
 
-const getRepositoryFromConnection = () => {
-  return getRepository(Book);
-}
+const getRepositoryFromConnection = () => (getRepository(Book));
  
 export class Books {
   public static async getAllBooks() {
@@ -12,23 +10,21 @@ export class Books {
   }
 
   public static async getBook(id: number) {
-    return await getRepositoryFromConnection().findOne(id);
+    return await getRepositoryFromConnection().findOneOrFail(id);
   }
 
-  public static async addBook(title: string, author: string) {
-    const book = new Book();
-    book.title = title;
-    book.author = author;
-    await getRepositoryFromConnection().save(book);
-    return book;
+  public static async addBook(book: Ibook) {
+    return await getRepositoryFromConnection().save(book);
   } 
 
-  public static async removeBook(title: string) {
-    console.log('deleted', await getRepositoryFromConnection().delete(title));
-    return 'OK';
+  public static async removeBook(id: number) {   
+    await Books.getBook(id);
+    await getRepositoryFromConnection().delete({ id });
+    return `Success deleting book with id:${id}`;   
   }
 
-  public static async updateBook() {
-    // return await getRepositoryFromConnection().update(); 
+  public static async updateBook(id: number, toUpdate: Ibook) {    
+    await getRepositoryFromConnection().update({ id }, toUpdate); 
+    return await Books.getBook(id);    
   }
 }

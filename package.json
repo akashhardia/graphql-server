@@ -1,29 +1,30 @@
 {
-   "name": "graphql-server-example",
-   "version": "1.0.0",
-   "description": "",
-   "main": "app.ts",
-   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "dev": "ts-node src/app.ts"
-   },
-   "author": "akash",
-   "license": "ISC",
-   "dependencies": {
-      "apollo-server": "^2.6.8",
-      "express": "^4.17.1",
-      "graphql": "^14.4.2",
-      "lodash": "^4.17.13",
-      "pg": "^7.11.0",
-      "reflect-metadata": "^0.1.10",
-      "typeorm": "0.2.18"
-   },
-   "devDependencies": {
-      "@types/express": "^4.17.0",
-      "@types/graphql": "^14.2.2",
-      "@types/lodash": "^4.14.136",
-      "@types/node": "^8.0.29",
-      "typescript": "3.3.3333",
-      "ts-node": "3.3.0"
-   }
+  "name": "graphql-server-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node src/app.ts"
+  },
+  "author": "akash",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.6.8",
+    "express": "^4.17.1",
+    "graphql": "^14.4.2",
+    "lodash": "^4.17.13",
+    "pg": "^7.11.0",
+    "reflect-metadata": "^0.1.10",
+    "typeorm": "0.2.18"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/graphql": "^14.2.2",
+    "@types/lodash": "^4.14.136",
+    "@types/node": "^8.0.29",
+    "ts-node": "3.3.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "3.3.3333"
+  }
 }

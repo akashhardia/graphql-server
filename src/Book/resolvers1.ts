@@ -4,17 +4,17 @@ import { IupdateBookArgs, Ibook } from './interfaces';
 // Resolvers define the technique for fetching the types in the
 // schema.  We'll retrieve books from the "books" array above.
 
-export const resolvers = {
+export const resolvers1 = {
   Query: {
-    books: () => Books.getAllBooks(),
+    books1: () => Books.getAllBooks(),
   },
   Mutation: {
-    addBook: (parent: any, args: {book: Ibook}) => {
+    addBook1: (parent: any, args: {book: Ibook}) => {
       args = JSON.parse(JSON.stringify(args));
       return Books.addBook(args.book);
     },
-    removeBook: (parent: any, args: {id: number}) => Books.removeBook(args.id),
-    updateBook: (parent: any, args: IupdateBookArgs) => {
+    removeBook1: (parent: any, args: {id: number}) => Books.removeBook(args.id),
+    updateBook1: (parent: any, args: IupdateBookArgs) => {
       args = JSON.parse(JSON.stringify(args));
       return Books.updateBook(args.id, args.toUpdate);
     },
