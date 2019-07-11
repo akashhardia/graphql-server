@@ -4,17 +4,32 @@ type Book {
   author: String,
 }
 
+type Project {
+  id: Int,
+  name: String,
+  manager: String,
+}
+
 input BookInput {
   title: String,
   author: String,
 }
 
+input ProjectInput {
+  name: String,
+  manager: String,
+}
+
 type Query {
   books: [Book],
+  projects: [Project],
 }
 
 type Mutation {
   addBook(book: BookInput!): Book!,
   removeBook(id: Int!): String!,
   updateBook(id: Int!, toUpdate: BookInput!): Book!,
+  addProject(project: ProjectInput!): Project!,
+  removeProject(id: Int!): String!,
+  updateProject(id: Int!, toUpdate: ProjectInput!): Project!,
 }
