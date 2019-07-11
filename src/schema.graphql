@@ -4,33 +4,17 @@ type Book {
   author: String,
 }
 
-type Book1 {
-  id: Int,
-  title: String,
-  author: String,
-}
-
 input BookInput {
   title: String,
   author: String,
 }
 
-input BookInput1 {
-  title: String,
-  author: String,
-}
-
-# The "Query" type is the root of all GraphQL queries.
 type Query {
   books: [Book],
-  books1: [Book1]
 }
 
 type Mutation {
   addBook(book: BookInput!): Book!,
   removeBook(id: Int!): String!,
-  updateBook(id: Int!, toUpdate: BookInput!): Book1!,
-  addBook1(book: BookInput1!): Book1!,
-  removeBook1(id: Int!): String!,
-  updateBook1(id: Int!, toUpdate: BookInput1!): Book1!,
+  updateBook(id: Int!, toUpdate: BookInput!): Book!,
 }
