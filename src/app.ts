@@ -1,7 +1,9 @@
 import './db';
-import typeDefs from './typedefs';
 import resolvers from './resolvers';
-import { ApolloServer } from 'apollo-server';
+import * as fs from 'fs';
+import { ApolloServer, gql } from 'apollo-server';
+
+const typeDefs = gql`${fs.readFileSync(__dirname.concat('/schema.graphql'))}`;
 
 const apollo = new ApolloServer({ typeDefs, resolvers });
 
