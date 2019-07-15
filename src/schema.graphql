@@ -17,17 +17,18 @@ input BookInput {
 
 input AuthorInput {
   name: String,
-  manager: [BookInput],
+  books: [BookInput],
 }
 
 type Query {
   books: [Book],
+  bookById(id: Int!): Book,
   authors: [Author],
 }
 
 type Mutation {
   addBook(book: BookInput!): Book!,
-  removeBook(id: Int!): String!,
+  removeBook(id: Int!): String,
   updateBook(id: Int!, toUpdate: BookInput!): Book!,
   addAuthor(author: AuthorInput!): Author!,
   removeAuthor(id: Int!): String!,

@@ -1,14 +1,15 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
-import { Author } from "./Author";
+import { author } from "./Author";
 
-@Entity()
-export class Book {
+@Entity('books')
+export class book {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   title: string;
 
-  @ManyToOne(type => Author, author => author.books, { cascade: true })
-  author: Author;
+  @ManyToOne(type => author, author => author.books, { cascade: true })
+  author: author;
 }
+  
