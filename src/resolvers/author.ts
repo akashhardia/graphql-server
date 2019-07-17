@@ -9,9 +9,9 @@ export const resolvers = {
     authors: () => getCustomRepository(authorRepository).getAllAuthors(),
   },
   Mutation: {
-    addAuthor: (parent: any, args: {book}) => {
+    addAuthor: (parent: any, args: {name: string, book: string}) => {
       args = JSON.parse(JSON.stringify(args));
-      return getCustomRepository(authorRepository).addAuthor(args.book);
+      return getCustomRepository(authorRepository).addAuthor(args);
     },
     removeAuthor: (parent: any, args: {id: number}) => getCustomRepository(authorRepository).removeAuthor(args.id),
     updateAuthor: (parent: any, args) => {

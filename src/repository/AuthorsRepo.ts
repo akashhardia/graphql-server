@@ -8,12 +8,16 @@ export class authorRepository extends Repository<author> {
     return await this.find({ relations: ['books'] });
   }
 
+  async getAuthorById(id: number) {
+    return await this.findOneOrFail(id);
+  }
+
   async addAuthor(authorToCreate) {
     const [newBook, newAuthor] = [new book(), new author()];
     newAuthor.name = authorToCreate.name;    
-    newBook.title = authorToCreate.book.title;
-    newAuthor.books.push(newBook);
-    return await this.manager.save(book);
+    newBook.title = authorToCreate.book;
+    newAuthor.books = [newBook];
+    return await this.save(newAuthor);
   }
   
   async updateAuthor(id: number, toUpdate) {

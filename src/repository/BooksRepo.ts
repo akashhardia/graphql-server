@@ -1,10 +1,10 @@
 import { book } from '../entity/Book';
-import { author } from '../entity/Author';
+import { authorRepository } from './AuthorsRepo';
 import { EntityRepository, Repository } from 'typeorm';
 
 @EntityRepository(book)
 export class BooksRepository extends Repository<book> {
-  async getAllBooks() {    
+  async getAllBooks() {
     return await this.find({ relations: ['author'] });
   }
 
@@ -13,10 +13,9 @@ export class BooksRepository extends Repository<book> {
   }
 
   async addBook(bookToCreate) {
-    const [newBook, newAuthor] = [new book(), new author()];
-    newBook.title = bookToCreate.title;    
-    newAuthor.name = bookToCreate.author.name;
-    newBook.author = newAuthor;
+    const newBook = new book();
+    newBook.title = bookToCreate.title;
+    newBook.author = await this.manager.getCustomRepository(authorRepository).getAuthorById(bookToCreate.authorId);
     return await this.save(newBook);
   }
   

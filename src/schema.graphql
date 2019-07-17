@@ -12,12 +12,12 @@ type Author {
 
 input BookInput {
   title: String,
-  author: AuthorInput,
+  authorId: Int,
 }
 
 input AuthorInput {
   name: String,
-  books: [BookInput],
+  book: String,
 }
 
 type Query {
